@@ -20,7 +20,7 @@ Widget that allows you to output a web app list of terms on your website with th
 
 ----------
 
-### Step 3. Get Web App ID and Web App Search ID (FID)
+### Step 3. Get Web App ID, Web App Search ID (FID) and Alphanumeric First Character Field ID
 
  1. In the admin under Site Manager select Pages
  2. Click Add Page
@@ -28,11 +28,16 @@ Widget that allows you to output a web app list of terms on your website with th
  4. Select Glossary Web App and click Insert
  5. When the glossary web app search form has been inserted into the WYSIWYG switch to the code or html view.
  6. Near the top you'll see the form action url. Copy the ID for CCID (also is the web app id) and FID. See below for example
+ 7. In the inserted web app search form find the input field for custom field you created in step 2. Copy and save custom field ID for next step. See below for example.
 
 `<form name="catcustomcontentform98191" method="post" onsubmit="return checkWholeForm98191(this)" action="/Default.aspx?CCID=45493&FID=1051923&ExcludeBoolFalse=True&PageID={module_oid}"></form>`
 
-CCID = 45493
-FID = 1051923
+Web App ID (CCID) = 45493
+Web App Search ID (FID) = 1051923
+
+`<input type="text" maxlength="255" name="CAT_Custom_1" id="CAT_Custom_1" class="cat_textbox" />`
+
+Alphanumeric First Character Field ID = CAT_Custom_1
 
 ----------
 
@@ -41,31 +46,23 @@ FID = 1051923
 
 #### Settings (if assigned variable settings are removed widget will set default option)
 
-Option | Type | Default | Description
+Option | Type | Description
 ------ | ---- | ------- | -----------
-w_atoz_parent_catalog_id|string|-1| By default set to output all catalogs or update and insert the parent catalog ID to output all sub catalogs of parent catalog.
-w_atoz_hide_parents|boolean|true|when setting w_atoz_parent_catalog_id to -1 to display all catalogs setting this option to true will hide parent catalogs from outputting
-w_atoz_columns|string|1|outputs A to Z Catalog/Brand list in 4 columns by defaults with responsive media queries. Options include 1-4 columns. Or if you'd like more control you can update the html (/_System/Widgets/atoz-catalog-list/init.liquid) and/or css (/_System/Widgets/atoz-catalog-list/_assets/atoz.css)
+w_glossary_web_app_id|string| Web App ID for Glossary Web App. Follow step 3 to retrieve this
+w_glossary_web_app_search_fid|string|Web App Search ID or FID. Follow step 3 to retrieve this
+w_glossary_alphanumeric_field_id|string|Web App "Alphanumeric First Character" field id. Follow step 3 to retrieve this
 
 #### Place initialization code on page that you would like to output A to Z Catalog/Brand List
 
 ```
-{% comment -%}<!-- Settings -->{% endcomment -%}
-{% assign w_atoz_parent_catalog_id = "-1" -%}
-{% assign w_atoz_hide_parents = true -%}  
-{% assign w_atoz_columns = "1" -%} 
-
-{%comment-%}<!-- Init Path -->{%endcomment-%}
-{% include "/_System/Widgets/atoz-catalog-list/init.liquid" -%} 
+<!--Begin Glossary--> 
+        {% comment -%}<!-- Settings -->{% endcomment -%}
+        {% assign w_glossary_web_app_id = "45493" -%}
+        {% assign w_glossary_web_app_search_fid = "1051923" -%}
+        {% assign w_glossary_alphanumeric_field_id = "CAT_Custom_1" -%}
+        
+        {%comment-%}<!-- Init Path -->{%endcomment-%}
+        {% include "/_System/Widgets/glossary/init.liquid" -%}         
+        <!--End Glossary--> 
 ```
 
-##### **Example outputting specific catalog sub catalogs:**
-
-```
-{% comment -%}<!-- Settings -->{% endcomment -%}
-{% assign w_atoz_parent_catalog_id = "123456" -%} 
-{% assign w_atoz_columns = "4" -%} 
-
-{%comment-%}<!-- Init Path -->{%endcomment-%}
-{% include "/_System/Widgets/atoz-catalog-list/init.liquid" -%} 
-```
