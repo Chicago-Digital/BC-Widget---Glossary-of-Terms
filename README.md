@@ -47,7 +47,7 @@ Alphanumeric First Character Field ID = CAT_Custom_1
 #### Settings (if assigned variable settings are removed widget will set default option)
 
 Option | Type | Description
------- | ---- | ------- | -----------
+------ | ---- | -----------
 w_glossary_web_app_id|string| Web App ID for Glossary Web App. Follow step 3 to retrieve this
 w_glossary_web_app_search_fid|string|Web App Search ID or FID. Follow step 3 to retrieve this
 w_glossary_alphanumeric_field_id|string|Web App "Alphanumeric First Character" field id. Follow step 3 to retrieve this
@@ -56,13 +56,13 @@ w_glossary_alphanumeric_field_id|string|Web App "Alphanumeric First Character" f
 
 ```
 <!--Begin Glossary--> 
-        {% comment -%}<!-- Settings -->{% endcomment -%}
-        {% assign w_glossary_web_app_id = "45493" -%}
-        {% assign w_glossary_web_app_search_fid = "1051923" -%}
-        {% assign w_glossary_alphanumeric_field_id = "CAT_Custom_1" -%}
-        
-        {%comment-%}<!-- Init Path -->{%endcomment-%}
-        {% include "/_System/Widgets/glossary/init.liquid" -%}         
-        <!--End Glossary--> 
+{% comment -%}<!-- Settings -->{% endcomment -%}
+{% assign w_glossary_web_app_id = "45493" -%}
+{% assign w_glossary_web_app_search_fid = "1051923" -%}
+{% assign w_glossary_alphanumeric_field_id = "CAT_Custom_1" -%}
+
+{%comment-%}<!-- Init Path -->{%endcomment-%}
+{% include "/_System/Widgets/glossary/init.liquid" -%}         
+<!--End Glossary--> 
 ```
 
