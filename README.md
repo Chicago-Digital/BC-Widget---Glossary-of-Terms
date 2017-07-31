@@ -43,6 +43,11 @@ Alphanumeric First Character Field ID = CAT_Custom_1
 
 ### Step 4. Initialize Widget
 
+#### Dependencies
+**jQuery is required for this widget to work. Please make sure your page or template that will be outputting the glossary of terms already has jQuery installed or insert it before your initialization code**
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 
 #### Settings (all settings are required for widget to work)
 
@@ -52,7 +57,7 @@ w_glossary_web_app_id|string| Web App ID for Glossary Web App. Follow step 3 to 
 w_glossary_web_app_search_fid|string|Web App Search ID or FID. Follow step 3 to retrieve this
 w_glossary_alphanumeric_field_id|string|Web App "Alphanumeric First Character" field id. Follow step 3 to retrieve this
 
-#### Place initialization code on page that you would like to output A to Z Catalog/Brand List
+#### Place initialization code on page that you would like to output Glossary of Terms
 
 ```
 <!--Begin Glossary--> 
@@ -66,3 +71,7 @@ w_glossary_alphanumeric_field_id|string|Web App "Alphanumeric First Character" f
 <!--End Glossary--> 
 ```
 
+### Other considerations or optional settings (advanced)
+1. When you upload your widgets folder /_System/Widgets/glossary a new page will be uploaded /_System/Widgets/glossary/_ajax/glossary.htm and this will create a new page on the server. When new pages are uploaded via sftp instead of being added via the admin the page name defaults to the name of "untitled" it is recommended you update this to "Glossary Search". Also, this page will default to not having a template defined. This is okay but for optimal performance it is recommended you create a blank template with "No HEAD elements" checked (under more options when creating a template). Then assign this glossary.htm page to this template so that no BC css or javascript files are injected on to the page.
+2. If you want to make any updates to the styling of the glossary of terms the css file can be found at the following path: /_System/Widgets/glossary/_assets/css/glossary.css or you can choose to override the styling in your own css files
+3. If you want to make any updates to the list layout of terms you can find the list layout at the following path: /_System/Widgets/glossary/layouts/glossary-list.tpl
