@@ -44,7 +44,7 @@ Alphanumeric First Character Field ID = CAT_Custom_1
 ### Step 4. Initialize Widget
 
 
-#### Settings (if assigned variable settings are removed widget will set default option)
+#### Settings (all settings are required for widget to work)
 
 Option | Type | Description
 ------ | ---- | -----------
